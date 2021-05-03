@@ -2,17 +2,31 @@
 export const columns2 = [
     {
       title: 'Name',
-      dataIndex: 'userName',
-      key: 'userName',
+      dataIndex: 'itemName',
+      key: 'itemName',
     },
     {
-      title: 'Company Name',
-      dataIndex: 'tenantName',
-      key: 'tenantName',
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description',
     },
     {
-      title: 'Email',
-      dataIndex: 'emailId',
-      key: 'emailId',
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
     },
+    {
+        title: 'Stock Left',
+        dataIndex: 'stockLeft',
+        key: 'stockLeft',
+      },
 ]
+
+
+export const locale = {
+    emptyText: (
+      <p>
+        No items Added So far <br></br>
+      </p>
+    ),
+  };
