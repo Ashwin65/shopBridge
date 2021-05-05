@@ -2,22 +2,22 @@
 export const columns2 = [
     {
       title: 'Name',
-      dataIndex: 'itemName',
+      dataIndex: 'Name',
       key: 'itemName',
     },
     {
       title: 'Description',
-      dataIndex: 'description',
+      dataIndex: 'Description',
       key: 'description',
     },
     {
       title: 'Price',
-      dataIndex: 'price',
+      dataIndex: 'Price',
       key: 'price',
     },
     {
         title: 'Stock Left',
-        dataIndex: 'stockLeft',
+        dataIndex: 'StockLeft',
         key: 'stockLeft',
       },
 ]

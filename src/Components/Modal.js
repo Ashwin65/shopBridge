@@ -4,27 +4,21 @@ import 'antd/dist/antd.css';
 
 
 const ModalComponent = (props) => {
-  const {children} = props;
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const {children, modalVisible, closeModal} = props;
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
+  // const handleOk = () => {
+  //   setIsModalVisible(false);
+  // };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+  // const handleCancel = () => {
+  //   setIsModalVisible(false);
+  // };
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Add a Item
-      </Button>
-      <Modal title="Add Item" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      
+      <Modal title="Add Item" visible={modalVisible}  onCancel={closeModal}  footer = {null}>
         {children}
       </Modal>
     </>

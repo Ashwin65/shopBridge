@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import {columns2, locale} from '../constants';
 import {Card , Table} from 'antd';
 import 'antd/dist/antd.css';
@@ -8,8 +9,10 @@ import CreateItem from './CreateItem';
 
 const AdminPortal = () => {
 
-  
+  const tableData = useSelector(state => state.Items)
 
+  
+console.log(tableData)
     return (
         <>
           <>
@@ -22,7 +25,7 @@ const AdminPortal = () => {
               </>
               <Table
                 columns={columns2}
-                // dataSource={this.props.superadmin}
+                dataSource={tableData}
                 locale={locale}
                 pagination={false}
                 className="organisations_table"

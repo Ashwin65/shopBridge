@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Form, Input, InputNumber} from 'antd';
+import { Form, Input, InputNumber, Button} from 'antd';
 
 const formItemLayout = {
   labelCol: {
@@ -27,13 +27,24 @@ const formItemLayout = {
   },
 };
 
+const tailLayout = {
+  wrapperCol: {
+    offset: 6,
+    span: 16,
+  },
+  style:{
+    marginTop:20
+  }
+};
+
 const CreateItemForm = (props) => {
   const [form] = Form.useForm();
 
 
-  const { getFieldDecorator } = form;
   const onFinish = (values) => {
+    props.saveItem(values);
     console.log('Received values of form: ', values);
+    form.resetFields();
   };
 
 
@@ -44,10 +55,7 @@ const CreateItemForm = (props) => {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ['zhejiang', 'hangzhou', 'xihu'],
-        prefix: '86',
-      }}
+     
       scrollToFirstError
     >
       <Form.Item
@@ -86,6 +94,13 @@ const CreateItemForm = (props) => {
         ]}>
        <InputNumber />
             </Form.Item>
+            <Form.Item {...tailLayout}>
+            
+        <Button type="primary" htmlType="submit" >
+          Submit
+        </Button>
+    
+      </Form.Item>
     </Form>
   );
 };
