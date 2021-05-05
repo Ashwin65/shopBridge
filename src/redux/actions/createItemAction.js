@@ -21,3 +21,14 @@ export const fetchItem = () => ({
 export const responseFetchItem = () => ({
     type : 'FETCH_ITEM'
 })
+
+
+export const deleteItem = (item) => ({
+    type: 'DELETE_ITEM',
+    payload: item
+})
+
+export const responseDeleteItem = (item) => ({
+    type: 'REMOVE_ITEM',
+    payload:item
+})
