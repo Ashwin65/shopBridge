@@ -1,0 +1,11 @@
+/* .ant-card-head-title page_title{
+    text-align:'center'
+} */
+.page_title {
+    text-align:center
+
+}
+
+.AddItemButton{
+    float:right
+}

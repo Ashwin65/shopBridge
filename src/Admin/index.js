@@ -9,6 +9,7 @@ import { Message } from '../Components/ConfirmModal'
 import CreateItemForm from '../Components/CreateItemForm';
 import EditItemForm from '../Components/EditItemForm'
 import { columns, locale } from '../constants';
+import './style.css'
 
 
 
@@ -75,9 +76,9 @@ const AdminPortal = () => {
       <>
         <Card
           className="content_card"
-          title={<div><h1 className="page_title">LIST OF ITEMS</h1>
+          title={<div ><h1 className="page_title">LIST OF ITEMS</h1>
 
-            <Button type="primary" onClick={showModal}>
+            <Button  className ="AddItemButton" type="primary" onClick={showModal}>
               Add a Item
       </Button>
             <Modal modalVisible={modalState} closeModal={closeModal} children={!isEdit ?
