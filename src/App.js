@@ -1,6 +1,4 @@
-import logo from './logo.svg';
-import React, { lazy, Suspense, PureComponent, useEffect } from 'react';
-
+import React, { lazy, Suspense } from 'react';
 import './App.css';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import {

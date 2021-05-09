@@ -1,4 +1,4 @@
-import axios, { post } from 'axios';
+import axios from 'axios';
 import {mockData} from '../redux/mockReduxStore';
 import * as interceptors from './Interceptors.tsx';
 
@@ -21,10 +21,8 @@ axios.interceptors.response.use(
     try {
       const res = await axios(config);
      
-      Logger(LogLevel.INFO, '[API-Client]: Response From the Api is Success',null);
       return res;
     } catch (e) {
-      Logger(LogLevel.WARN, '[API-Client]: Api call has failed',e);
       return Promise.reject(e);
     }
   };

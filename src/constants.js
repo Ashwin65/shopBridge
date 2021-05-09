@@ -1,5 +1,5 @@
-import { Button,Tag, Divider} from 'antd';
-export const columns2 = (deleteItem, editItem) => {
+import { Button, Divider} from 'antd';
+export const columns = (deleteItem, editItem) => {
   
   return (
     [

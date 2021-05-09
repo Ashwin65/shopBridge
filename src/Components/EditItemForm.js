@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import 'antd/dist/antd.css';
-import { Form, Input, InputNumber, Button} from 'antd';
+import { Form, Input, InputNumber, Button } from 'antd';
 
 const formItemLayout = {
   labelCol: {
@@ -10,15 +10,15 @@ const formItemLayout = {
     sm: {
       span: 4,
     },
-    lg: { 
-      span: 6 
+    lg: {
+      span: 6
     },
   },
   wrapperCol: {
     xs: {
       span: 24,
     },
-    lg: { 
+    lg: {
       span: 16
     },
     sm: {
@@ -32,27 +32,27 @@ const tailLayout = {
     offset: 6,
     span: 16,
   },
-  style:{
-    marginTop:20,
-    alignItems : 'space-between'
+  style: {
+    marginTop: 20,
+    alignItems: 'space-between'
   }
 };
 
 const CreateItemForm = (props) => {
   const [form] = Form.useForm();
- 
+
   const formRef = useRef();
 
-  useEffect(()=> {
+  useEffect(() => {
     form.setFieldsValue({
       name: value.name,
       description: value.description,
       price: value.price,
-      stockLeft:value.stockLeft
+      stockLeft: value.stockLeft
     })
   })
 
-  const {value, isEdit} = props;
+  const { value, isEdit } = props;
 
 
 
@@ -73,9 +73,9 @@ const CreateItemForm = (props) => {
       form={form}
       name="register"
       onFinish={onFinish}
-    
+
       scrollToFirstError
-      ref = {formRef}
+      ref={formRef}
     >
       <Form.Item
         name="name"
@@ -86,7 +86,7 @@ const CreateItemForm = (props) => {
             message: 'Please input name of the item!',
           },
         ]}
-        style={{textAlign:'left'}}
+        style={{ textAlign: 'left' }}
       >
         <Input disabled={true} />
       </Form.Item>
@@ -99,40 +99,40 @@ const CreateItemForm = (props) => {
             message: 'Please input the description!',
           },
         ]}
-        style={{textAlign:'left'}}
+        style={{ textAlign: 'left' }}
       >
         <Input />
       </Form.Item>
-      <Form.Item name = "price" label= "Price" Col span={8}  rules={[
-          {
-           
-            required: true,
-            message: 'Please input the Price!',
-            type: 'number',
-          },
-        ]}>
-        
-       <InputNumber />
-            </Form.Item>
+      <Form.Item name="price" label="Price" Col span={8} rules={[
+        {
 
-            <Form.Item name = "stockLeft" label= "Stocks Left" Col span={8}  rules={[
-          {
-           
-            required: true,
-            message: 'Please input the Quantity of Stocs!',
-            type: 'number',
-          },
-        ]}>
-                
-       <InputNumber />
+          required: true,
+          message: 'Please input the Price!',
+          type: 'number',
+        },
+      ]}>
 
-        </Form.Item>
-            <Form.Item {...tailLayout}>
-            
+        <InputNumber />
+      </Form.Item>
+
+      <Form.Item name="stockLeft" label="Stocks Left" Col span={8} rules={[
+        {
+
+          required: true,
+          message: 'Please input the Quantity of Stocs!',
+          type: 'number',
+        },
+      ]}>
+
+        <InputNumber />
+
+      </Form.Item>
+      <Form.Item {...tailLayout}>
+
         <Button type="primary" htmlType="submit" >
           Submit
         </Button>
-    
+
       </Form.Item>
     </Form>
   );
