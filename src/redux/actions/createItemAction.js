@@ -1,6 +1,5 @@
 
 export const createItem = (data) => (
-      console.log(data),
     {
   
     type: 'STORE_ITEM',
@@ -8,7 +7,6 @@ export const createItem = (data) => (
 })
 
 export const responeCreateItem = (data) => (
-    console.log(data),
     {
     type: 'ADD_ITEM',
     payload: data
@@ -30,5 +28,15 @@ export const deleteItem = (item) => ({
 
 export const responseDeleteItem = (item) => ({
     type: 'REMOVE_ITEM',
+    payload:item
+})
+
+export const editItem = (item) => ({
+    type: 'EDIT_ITEM',
+    payload:item
+})
+
+export const responseEditItem = (item) => ({
+    type: 'REPLACE_ITEM',
     payload:item
 })

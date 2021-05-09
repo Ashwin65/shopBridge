@@ -19,7 +19,6 @@ axios.interceptors.response.use(
 
   export const startFetch = async (config) => {
     try {
-      console.log('line 22');
       const res = await axios(config);
      
       Logger(LogLevel.INFO, '[API-Client]: Response From the Api is Success',null);

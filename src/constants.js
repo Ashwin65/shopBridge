@@ -1,26 +1,26 @@
 import { Button,Tag, Divider} from 'antd';
-export const columns2 = (deleteItem) => {
+export const columns2 = (deleteItem, editItem) => {
   
   return (
     [
       {
         title: 'Name',
-        dataIndex: 'Name',
+        dataIndex: 'name',
         key: 'itemName',
       },
       {
         title: 'Description',
-        dataIndex: 'Description',
+        dataIndex: 'description',
         key: 'description',
       },
       {
         title: 'Price',
-        dataIndex: 'Price',
+        dataIndex: 'price',
         key: 'price',
       },
       {
           title: 'Stock Left',
-          dataIndex: 'StockLeft',
+          dataIndex: 'stockLeft',
           key: 'stockLeft',
         },
         {
@@ -34,7 +34,7 @@ export const columns2 = (deleteItem) => {
                       className="Approve_Button"
                       type="primary"
                       id={record.userId}
-                      // onClick={this.Approve}
+                      onClick={() => editItem(record)}
                     >
                       Edit
                     </Button>
@@ -47,16 +47,7 @@ export const columns2 = (deleteItem) => {
                       Delete
                     </Button>
                   </>
-              {record.accountManager === true && (
-                <>
-                  <Tag color="green">Approved</Tag>
-                </>
-              )}
-              {record.declineForAccountManager === true && (
-                <>
-                  <Tag color="red">Declined</Tag>
-                </>
-              )}
+            
             </span>
           ),
         },

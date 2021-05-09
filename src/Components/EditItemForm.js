@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import 'antd/dist/antd.css';
-import { Form, Input, InputNumber, Button } from 'antd';
+import { Form, Input, InputNumber, Button} from 'antd';
 
 const formItemLayout = {
   labelCol: {
@@ -40,12 +40,26 @@ const tailLayout = {
 
 const CreateItemForm = (props) => {
   const [form] = Form.useForm();
+ 
+  const formRef = useRef();
+
+  useEffect(()=> {
+    form.setFieldsValue({
+      name: value.name,
+      description: value.description,
+      price: value.price,
+      stockLeft:value.stockLeft
+    })
+  })
+
+  const {value, isEdit} = props;
 
 
-  
+
+
 
   const onFinish = (values) => {
-    props.saveItem(values);
+    props.editItem(values);
     form.resetFields();
   };
 
@@ -60,8 +74,8 @@ const CreateItemForm = (props) => {
       name="register"
       onFinish={onFinish}
     
-     
       scrollToFirstError
+      ref = {formRef}
     >
       <Form.Item
         name="name"
@@ -74,7 +88,7 @@ const CreateItemForm = (props) => {
         ]}
         style={{textAlign:'left'}}
       >
-        <Input />
+        <Input disabled={true} />
       </Form.Item>
       <Form.Item
         name="description"
@@ -97,6 +111,7 @@ const CreateItemForm = (props) => {
             type: 'number',
           },
         ]}>
+        
        <InputNumber />
             </Form.Item>
 

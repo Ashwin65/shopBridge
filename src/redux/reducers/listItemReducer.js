@@ -1,14 +1,16 @@
-import { useState } from "react";
+
 
 const  itemList= [ {
-        Name: 'A1',
-        Description: 'B',
-        Price: 20
+        name: 'A1',
+        description: 'B',
+        price: 20,
+        stockLeft: 40
     },
     {
-        Name: 'A2',
-        Description: 'B2',
-        Price: 30
+        name: 'A2',
+        description: 'B2',
+        price: 30,
+        stockLeft: 50
     }]
 const initialState = {}
 
@@ -18,8 +20,6 @@ export const listItemReducer = (state = itemList, action) => {
         return initialState;
       }
 
-      console.log('hey16', state)
-      console.log('hey17' , action.payload)
     switch (action.type) {
        
         case 'ADD_ITEM':
@@ -32,17 +32,35 @@ export const listItemReducer = (state = itemList, action) => {
 
         case 'REMOVE_ITEM':
           let  result = deleteItemFromList(state,action);
-        return  result
+        return  result;
+        case 'REPLACE_ITEM':
+          let replaceList = replaceItemFromList(state,action);
+
+            return replaceList;
 
         default:
             return state;
     }
 }
-
-
 const deleteItemFromList = (state,action) => {
-     console.log(state, action.payload)
-    let result = state.filter(item => item.Name!= action.payload.Name)
-    console.log("result",result)
+    let result = state.filter(item => item.name!= action.payload.name)
     return result
+}
+
+const replaceItemFromList = (state,action) => {
+
+    for(let i=0; i<state.length;i++)
+    {
+        if(state[i].name === action.payload.name)
+        {
+            state[i].name=action.payload.name;
+            state[i].description= action.payload.description;
+            state[i].price = action.payload.price;
+            state[i].stockLeft= action.payload.stockLeft
+        }
+    }
+
+    return state;
+
+
 }

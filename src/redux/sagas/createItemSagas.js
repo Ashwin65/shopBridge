@@ -1,5 +1,5 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
-import {responeCreateItem, responseFetchItem, responseDeleteItem} from '../actions/createItemAction';
+import {responeCreateItem, responseFetchItem, responseDeleteItem, responseEditItem} from '../actions/createItemAction';
 
 
 export function* storeItem(action) {
@@ -7,10 +7,8 @@ export function* storeItem(action) {
        /* yield call (
             ApiServices.createItem(payload)
         ) */
-        console.log(action)
         yield put(responeCreateItem(action.payload));
 
-        console.log("hello", action)
     }
     catch (err) {
         console.log(err)
@@ -28,7 +26,6 @@ export function* fetchItem() {
 
 export function* removeItem(action) {
     try {
-        console.log(action)
         yield put(responseDeleteItem(action.payload))
     }
     catch (err) {
@@ -36,12 +33,22 @@ export function* removeItem(action) {
     }
 } 
 
+export function* editItem(action) {
+    try{
+        yield put(responseEditItem(action.payload))
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
 
 export default function* itemSagas() {
     yield all ([
         takeLatest('STORE_ITEM', storeItem),
         takeLatest('GET_ITEM', fetchItem),
         takeLatest('DELETE_ITEM', removeItem),
+        takeLatest('EDIT_ITEM', editItem)
     ]);
     
 }

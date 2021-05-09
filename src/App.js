@@ -1,10 +1,36 @@
 import logo from './logo.svg';
+import React, { lazy, Suspense, PureComponent, useEffect } from 'react';
+
 import './App.css';
-import AdminPortal from './Admin/index';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import {
+  Link, Route, Router, Switch
+} from 'react-router-dom';
+import history from './Routes/history';
+
+const AdminPortal = lazy(() => import('./Admin/index'));
+const NotFound = lazy (()=> import('./Routes/NotFound'))
+
+
 
 function App() {
   return (
-        <AdminPortal/>
+    <ErrorBoundary>
+      <Router history = {history}>
+      <>
+            <Link to="/" className={AdminPortal} />
+          </>
+    <Suspense fallback={<div>Loading...</div>}>
+    <Switch>
+    <Route exact path="/" component={AdminPortal}  />
+      <Route path="*" component={NotFound} />
+    </Switch>
+  </Suspense>
+  </Router>
+  </ErrorBoundary>
+
+
+  
   );
 }
 
