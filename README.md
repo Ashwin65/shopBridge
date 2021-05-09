@@ -9,7 +9,7 @@ This is a admin portal to view list of items
 
 Technology Stack
 
-- **Web-App : ** ReactJS
+- Web-App : ReactJS
 
 </p>
 
