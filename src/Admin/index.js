@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Card, Table, Button } from 'antd';
 import 'antd/dist/antd.css';
-import { createItem } from '../redux/actions/ItemActions'
-import { deleteItem, editItem } from '../redux/actions/ItemActions'
-import Modal from '../Components/Modal';
-import { Message } from '../Components/ConfirmModal'
-import CreateItemForm from '../Components/CreateItemForm';
-import EditItemForm from '../Components/EditItemForm'
-import { columns, locale } from '../constants';
 import './style.css'
 
+import { Button, Card, Table } from 'antd';
+import React, { useState } from 'react';
+import { columns, locale } from '../constants';
+import { deleteItem, editItem } from '../redux/actions/ItemActions'
+import { useDispatch, useSelector } from 'react-redux';
 
+import CreateItemForm from '../Components/CreateItemForm';
+import EditItemForm from '../Components/EditItemForm'
+import { Message } from '../Components/ConfirmModal'
+import Modal from '../Components/Modal';
+import { createItem } from '../redux/actions/ItemActions'
 
 const AdminPortal = () => {
 
@@ -26,6 +26,7 @@ const AdminPortal = () => {
   const dispatch = useDispatch();
 
   const okayHandler = (record) => {
+    console.log("a")
     dispatch(deleteItem(record))
   }
 
